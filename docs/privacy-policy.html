@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lanlyst Tool — Privacy Policy</title>
+  <style>
+    :root {
+      --navy: #1A325F;
+      --navy-deep: #152A52;
+      --navy-banner: #1E3A6E;
+      --body-bg: #F2F3F5;
+      --card: #FFFFFF;
+      --border: #E0E3E8;
+      --text: #1A2B4A;
+      --muted: #6B7280;
+      --orange: #E67E22;
+      --teal: #1ABC9C;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--body-bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .hero {
+      background: linear-gradient(135deg, var(--navy-deep), var(--navy), var(--navy-banner));
+      color: #fff;
+      padding: 40px 20px 36px;
+      text-align: center;
+    }
+    .hero h1 {
+      margin: 0 0 8px;
+      font-size: 1.75rem;
+      letter-spacing: -0.02em;
+    }
+    .hero p { margin: 0; opacity: 0.85; font-size: 0.95rem; }
+    .wrap {
+      max-width: 760px;
+      margin: -18px auto 48px;
+      padding: 0 16px;
+    }
+    .card {
+      background: var(--card);
+      border-radius: 16px;
+      box-shadow: 0 8px 18px rgba(26, 50, 95, 0.07);
+      padding: 28px 24px;
+      border: 1px solid var(--border);
+    }
+    h2 {
+      color: var(--navy);
+      font-size: 1.15rem;
+      margin: 28px 0 10px;
+      letter-spacing: -0.02em;
+    }
+    h2:first-child { margin-top: 0; }
+    p, li { color: var(--text); font-size: 0.95rem; }
+    .muted { color: var(--muted); font-size: 0.9rem; }
+    a { color: var(--teal); font-weight: 600; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    ul { padding-left: 1.2rem; }
+    li { margin-bottom: 6px; }
+    .badge {
+      display: inline-block;
+      background: rgba(26, 188, 156, 0.12);
+      color: var(--navy);
+      border-radius: 999px;
+      padding: 4px 12px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .contact {
+      background: rgba(26, 50, 95, 0.05);
+      border-left: 4px solid var(--orange);
+      padding: 14px 16px;
+      border-radius: 8px;
+      margin-top: 12px;
+    }
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      padding: 8px 16px 40px;
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <h1>Privacy Policy</h1>
+    <p>Lanlyst Tool · Wi‑Fi &amp; LAN security toolkit</p>
+  </header>
+
+  <main class="wrap">
+    <article class="card">
+      <span class="badge">Effective date: September 12, 2026</span>
+      <p class="muted">
+        This Privacy Policy explains how <strong>Lanlyst Tool</strong>
+        (“the App”, “we”, “us”) handles information when you use the iOS application.
+        Contact: <a href="mailto:impro19dev@gmail.com">impro19dev@gmail.com</a>.
+      </p>
+
+      <h2>1. Who we are</h2>
+      <p>
+        Lanlyst Tool is a network utility and educational router-hardening app.
+        It helps you review your own Wi‑Fi/LAN environment (for example device discovery,
+        ping, DNS, speed estimate, and security checklists). It does <strong>not</strong>
+        crack Wi‑Fi passwords or perform unauthorized access.
+      </p>
+
+      <h2>2. Information the App may access</h2>
+      <p>Depending on features you use and permissions you grant, the App may access:</p>
+      <ul>
+        <li><strong>Location (When In Use)</strong> — required by iOS to read the current Wi‑Fi network name (SSID) and related network identifiers. We do not use location to track your physical movements for advertising.</li>
+        <li><strong>Local Network</strong> — to discover reachable devices on networks you own or administer, and to run LAN diagnostics you initiate.</li>
+        <li><strong>Network information</strong> — such as IP address, gateway, subnet, and BSSID, processed on device for diagnostics.</li>
+        <li><strong>Device storage (preferences)</strong> — checklist progress and similar settings may be saved locally via Shared Preferences / UserDefaults.</li>
+        <li><strong>Diagnostics you request</strong> — when you run tools (for example DNS lookup, HTTP headers, Whois/RDAP, MAC vendor lookup, speed test), the App sends network requests to the destinations you choose or to public lookup/speed endpoints.</li>
+      </ul>
+
+      <h2>3. What we do <em>not</em> collect</h2>
+      <ul>
+        <li>We do not create user accounts.</li>
+        <li>We do not sell personal information.</li>
+        <li>We do not use advertising SDKs or third-party ad trackers in the App.</li>
+        <li>We do not collect precise continuous location for marketing.</li>
+      </ul>
+
+      <h2>4. How information is used</h2>
+      <ul>
+        <li>To show your current Wi‑Fi/LAN details and diagnostic results in the App.</li>
+        <li>To perform user-initiated network utilities.</li>
+        <li>To remember optional checklist/settings on your device.</li>
+        <li>To respond if you contact support by email.</li>
+      </ul>
+
+      <h2>5. Third-party services &amp; SDKs</h2>
+      <p>
+        The App uses standard Flutter/iOS libraries and may contact public services only when you use related tools:
+      </p>
+      <ul>
+        <li><strong>network_info_plus / connectivity_plus</strong> — network status and Wi‑Fi details on device.</li>
+        <li><strong>permission_handler</strong> — requests OS permissions.</li>
+        <li><strong>shared_preferences</strong> — local settings storage on device.</li>
+        <li><strong>url_launcher</strong> — opens links (for example your router admin page) in Safari/system browser.</li>
+        <li><strong>http</strong> — user-initiated requests (speed test sample download, HTTP headers, MAC vendor APIs, RDAP/Whois lookups).</li>
+      </ul>
+      <p class="muted">
+        Those third-party endpoints may process the IP address of your request and the query you submit (domain, URL, or MAC). Their own privacy policies apply to their services.
+      </p>
+
+      <h2>6. Data retention</h2>
+      <p>
+        Diagnostic results are generally shown in memory for the session and are not uploaded to our servers.
+        Local checklist/settings remain on your device until you delete the App or clear App data.
+        Emails you send to support are retained as needed to respond and for ordinary business records.
+      </p>
+
+      <h2>7. Children’s privacy</h2>
+      <p>
+        The App is not directed to children under 13. We do not knowingly collect personal information from children under 13.
+        If you believe a child has provided information via support email, contact us and we will delete it where appropriate.
+      </p>
+
+      <h2>8. Security</h2>
+      <p>
+        We use reasonable technical measures appropriate for an on-device utility App.
+        No method of electronic transmission or storage is 100% secure. Use the App only on networks you own or are authorized to test.
+      </p>
+
+      <h2>9. Your choices</h2>
+      <ul>
+        <li>Deny or revoke Location / Local Network permissions in iOS Settings.</li>
+        <li>Avoid running lookup or speed-test tools if you do not want those network requests.</li>
+        <li>Uninstall the App to remove local preferences stored by the App.</li>
+      </ul>
+
+      <h2>10. International users</h2>
+      <p>
+        Processing primarily occurs on your device. When you contact us or use online lookup tools, data may be processed in other countries by email providers or those third-party services.
+      </p>
+
+      <h2>11. Changes</h2>
+      <p>
+        We may update this Privacy Policy. The “Effective date” above will change when we do.
+        Continued use of the App after updates means you acknowledge the revised policy.
+      </p>
+
+      <h2>12. Contact</h2>
+      <div class="contact">
+        <strong>Lanlyst Tool Support</strong><br />
+        Email: <a href="mailto:impro19dev@gmail.com">impro19dev@gmail.com</a><br />
+        Subject suggestion: “Lanlyst Tool — Privacy”
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    © 2026 Lanlyst Tool · <a href="mailto:impro19dev@gmail.com">impro19dev@gmail.com</a>
+  </footer>
+</body>
+</html>
