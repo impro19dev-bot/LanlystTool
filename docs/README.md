@@ -58,7 +58,7 @@ After a successful rebuild:
 
 - Archive: `build/ios/archive/Runner.xcarchive`
 - IPA: `build/ios/ipa/Lanlyst Tool.ipa`
-- Bundle ID: `com.Lanlyst.wpsapp`
+- Bundle ID: `com.lanlystool.wpsapp`
 - Version: **1.0.0 (1)**
 - Team: `49B45VHG69` (ZOUHAIR MOUFARAJ)
 - Signing: Cloud Managed **Apple Distribution** (automatic)
@@ -87,7 +87,7 @@ chmod +x docs/upload-to-asc.sh
 
 Open `build/ios/archive/Runner.xcarchive` → Distribute App → App Store Connect → Upload.
 
-Create the app record first in App Store Connect with bundle ID `com.Lanlyst.wpsapp` if it does not exist yet.
+Create the app record first in App Store Connect with bundle ID `com.lanlystool.wpsapp` if it does not exist yet.
 
 ---
 

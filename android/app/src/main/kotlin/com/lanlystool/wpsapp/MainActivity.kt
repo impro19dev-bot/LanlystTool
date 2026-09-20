@@ -1,4 +1,4 @@
-package com.Lanlyst.wpsapp
+package com.lanlystool.wpsapp
 
 import io.flutter.embedding.android.FlutterActivity
 

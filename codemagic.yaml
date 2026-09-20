@@ -6,8 +6,11 @@ workflows:
 
     environment:
       flutter: 3.41.0
+      # Xcode 26+ required for App Store (iOS 26 SDK / ITMS-90725)
+      xcode: latest
       ios_signing:
         distribution_type: app_store
+        # Must be an App Store profile for com.lanlystool.wpsapp (upload in Codemagic → Code signing)
         provisioning_profiles:
           - provisioning_LanlystTool
         certificates:

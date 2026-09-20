@@ -3,7 +3,7 @@
 Use this when filling **App Store Connect → App Privacy**.
 
 **Developer contact:** impro19dev@gmail.com  
-**Bundle ID:** `com.Lanlyst.wpsapp`  
+**Bundle ID:** `com.lanlystool.wpsapp`  
 **Based on SDKs / packages in `pubspec.yaml` as of Sep 12, 2026**
 
 ---
