@@ -1,7 +1,7 @@
 name: fc_app3_wpswifianalyzer
 description: "Lanlyst Tool — Wi-Fi security analyzer and network utilities for iOS."
 publish_to: 'none'
-version: 1.0.0+2
+version: 1.0.1+1
 
 environment:
   sdk: ^3.11.0
