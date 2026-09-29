@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import '../../ads/fullscreen_ad_gate.dart';
 import '../../state/app_network_state.dart';
 import '../../theme/app_colors.dart';
 import '../../utils/ip_utils.dart';
@@ -167,7 +168,7 @@ class NetworkTab extends StatelessWidget {
                           SizedBox(width: 10),
                           Expanded(
                             child: Text(
-                              'Tip: Harden routers you own (strong Wi‑Fi password, current firmware). This app does not recover or crack Wi‑Fi passwords.',
+                              'Tip: On networks you own, use a strong Wi‑Fi password and keep firmware current. This app analyzes your network — it does not recover Wi‑Fi passwords.',
                               style: TextStyle(
                                 fontSize: 12.5,
                                 height: 1.35,
@@ -182,7 +183,7 @@ class NetworkTab extends StatelessWidget {
                   ],
                   const SectionHeader(
                     icon: Icons.build_circle_outlined,
-                    title: 'Lanlyst tools',
+                    title: 'WPSApp tools',
                   ),
                   const SizedBox(height: 12),
                   ToolListTile(
@@ -191,11 +192,13 @@ class NetworkTab extends StatelessWidget {
                     title: 'Router risk snapshot',
                     subtitle: 'Current Wi-Fi and hardening guidance',
                     onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute<void>(
-                          builder: (_) => WpsRiskSnapshotPage(state: state),
-                        ),
-                      );
+                      FullscreenAdGate.withInterstitial(() {
+                        Navigator.of(context).push(
+                          MaterialPageRoute<void>(
+                            builder: (_) => WpsRiskSnapshotPage(state: state),
+                          ),
+                        );
+                      });
                     },
                   ),
                   const SizedBox(height: 10),
@@ -205,11 +208,13 @@ class NetworkTab extends StatelessWidget {
                     title: 'Security checklist',
                     subtitle: 'Harden your router step by step',
                     onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute<void>(
-                          builder: (_) => const WpsSecurityCenterPage(),
-                        ),
-                      );
+                      FullscreenAdGate.withInterstitial(() {
+                        Navigator.of(context).push(
+                          MaterialPageRoute<void>(
+                            builder: (_) => const WpsSecurityCenterPage(),
+                          ),
+                        );
+                      });
                     },
                   ),
                   const SizedBox(height: 10),
@@ -219,12 +224,14 @@ class NetworkTab extends StatelessWidget {
                     title: 'Router Quick Setup Assistant',
                     subtitle: 'Gateway, WPA2/WPA3, admin password',
                     onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute<void>(
-                          builder: (_) =>
-                              RouterSetupAssistantPage(state: state),
-                        ),
-                      );
+                      FullscreenAdGate.withInterstitial(() {
+                        Navigator.of(context).push(
+                          MaterialPageRoute<void>(
+                            builder: (_) =>
+                                RouterSetupAssistantPage(state: state),
+                          ),
+                        );
+                      });
                     },
                   ),
                 ],

@@ -20,7 +20,7 @@ class MacVendorResult {
 
 class MacLookupService {
   static const _headers = {
-    'User-Agent': 'LanlystTool/1.0 (iOS; Flutter)',
+    'User-Agent': 'WPSApp/1.0 (iOS; Flutter)',
     'Accept': 'application/json, text/plain',
   };
 
@@ -161,7 +161,7 @@ class WhoisService {
           uri,
           headers: {
             'Accept': 'application/rdap+json, application/json',
-            'User-Agent': 'LanlystTool/1.0',
+            'User-Agent': 'WPSApp/1.0',
           },
         ).timeout(const Duration(seconds: 15));
 

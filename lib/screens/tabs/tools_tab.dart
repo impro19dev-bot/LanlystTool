@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../ads/fullscreen_ad_gate.dart';
 import '../../state/app_network_state.dart';
 import '../../theme/app_colors.dart';
 import '../../widgets/section_header.dart';
@@ -36,7 +37,10 @@ class ToolsTab extends StatelessWidget {
           iconColor: AppColors.orange,
           title: 'Router risk snapshot',
           subtitle: 'Current Wi-Fi and hardening guidance',
-          onTap: () => _open(context, WpsRiskSnapshotPage(state: state)),
+          onTap: () => _openInterstitial(
+            context,
+            WpsRiskSnapshotPage(state: state),
+          ),
         ),
         const SizedBox(height: 10),
         ToolListTile(
@@ -44,7 +48,8 @@ class ToolsTab extends StatelessWidget {
           iconColor: AppColors.navy,
           title: 'Security checklist',
           subtitle: 'Harden your router step by step',
-          onTap: () => _open(context, const WpsSecurityCenterPage()),
+          onTap: () =>
+              _openInterstitial(context, const WpsSecurityCenterPage()),
         ),
         const SizedBox(height: 10),
         ToolListTile(
@@ -52,7 +57,10 @@ class ToolsTab extends StatelessWidget {
           iconColor: AppColors.teal,
           title: 'Router Quick Setup Assistant',
           subtitle: 'Gateway, WPA2/WPA3, admin password',
-          onTap: () => _open(context, RouterSetupAssistantPage(state: state)),
+          onTap: () => _openInterstitial(
+            context,
+            RouterSetupAssistantPage(state: state),
+          ),
         ),
         const SizedBox(height: 22),
         const SectionHeader(
@@ -70,7 +78,7 @@ class ToolsTab extends StatelessWidget {
           iconColor: AppColors.teal,
           title: 'Speed Test',
           subtitle: 'Estimate download throughput',
-          onTap: () => _open(context, const SpeedTestPage()),
+          onTap: () => _openRewarded(context, const SpeedTestPage()),
         ),
         const SizedBox(height: 10),
         ToolListTile(
@@ -78,7 +86,7 @@ class ToolsTab extends StatelessWidget {
           iconColor: AppColors.navy,
           title: 'Ping Host',
           subtitle: 'TCP reachability & latency',
-          onTap: () => _open(
+          onTap: () => _openRewarded(
             context,
             PingPage(initialHost: state.wifi?.gatewayIp ?? '1.1.1.1'),
           ),
@@ -89,7 +97,7 @@ class ToolsTab extends StatelessWidget {
           iconColor: AppColors.orange,
           title: 'Port Scan',
           subtitle: 'Common ports on a host you administer',
-          onTap: () => _open(
+          onTap: () => _openRewarded(
             context,
             PortScanPage(initialHost: state.wifi?.gatewayIp ?? '1.1.1.1'),
           ),
@@ -100,7 +108,7 @@ class ToolsTab extends StatelessWidget {
           iconColor: const Color(0xFF5B6EE1),
           title: 'DNS Lookup',
           subtitle: 'Resolve hostnames to IP addresses',
-          onTap: () => _open(context, const DnsLookupPage()),
+          onTap: () => _openRewarded(context, const DnsLookupPage()),
         ),
         const SizedBox(height: 10),
         ToolListTile(
@@ -108,7 +116,7 @@ class ToolsTab extends StatelessWidget {
           iconColor: const Color(0xFF8E44AD),
           title: 'Subnet Calculator',
           subtitle: 'CIDR network, hosts, broadcast',
-          onTap: () => _open(
+          onTap: () => _openInterstitial(
             context,
             SubnetCalcPage(
               initial: state.wifi?.wifiIp != null
@@ -123,7 +131,7 @@ class ToolsTab extends StatelessWidget {
           iconColor: const Color(0xFF16A085),
           title: 'MAC Vendor Lookup',
           subtitle: 'Identify manufacturer from MAC / OUI',
-          onTap: () => _open(
+          onTap: () => _openInterstitial(
             context,
             MacLookupPage(initialMac: state.wifi?.bssid),
           ),
@@ -152,5 +160,13 @@ class ToolsTab extends StatelessWidget {
     Navigator.of(context).push(
       MaterialPageRoute<void>(builder: (_) => page),
     );
+  }
+
+  void _openRewarded(BuildContext context, Widget page) {
+    FullscreenAdGate.withRewarded(() => _open(context, page));
+  }
+
+  void _openInterstitial(BuildContext context, Widget page) {
+    FullscreenAdGate.withInterstitial(() => _open(context, page));
   }
 }

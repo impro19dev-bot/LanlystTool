@@ -24,7 +24,7 @@ void main() {
     );
     await tester.pump();
 
-    expect(find.text('Lanlyst Tool'), findsOneWidget);
+    expect(find.text('WPSApp'), findsOneWidget);
 
     await tester.tap(find.text('TOOLS'));
     await tester.pumpAndSettle();
@@ -32,7 +32,7 @@ void main() {
 
     await tester.tap(find.text('Router risk snapshot'));
     await tester.pumpAndSettle();
-    expect(find.text('Hardening guidance'), findsOneWidget);
+    expect(find.text('Router setup tips'), findsOneWidget);
     await tester.pageBack();
     await tester.pumpAndSettle();
 

@@ -99,12 +99,11 @@ class _WpsSecurityCenterPageState extends State<WpsSecurityCenterPage> {
                 }),
                 const SizedBox(height: 8),
                 InfoCard(
-                  title: 'Why disable WPS?',
+                  title: 'Recommended setup',
                   child: const Text(
-                    'WPS PIN mode was designed with an 8-digit PIN that can be validated in two halves, '
-                    'greatly reducing the search space. Push-button WPS can also be abused if someone has '
-                    'physical proximity. Disabling WPS and using a strong WPA2/WPA3 passphrase is the '
-                    'recommended fix for home routers.',
+                    'Wi‑Fi Protected Setup (WPS / QSS) is a convenience feature that many router makers '
+                    'advise turning off for everyday use. Prefer WPA2 or WPA3 with a strong passphrase '
+                    'on networks you administer. This app does not connect to or reconfigure your router for you.',
                     style: TextStyle(
                       color: AppColors.textMuted,
                       fontSize: 13,

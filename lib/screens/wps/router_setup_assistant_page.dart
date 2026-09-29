@@ -100,7 +100,10 @@ class _RouterSetupAssistantPageState extends State<RouterSetupAssistantPage> {
                   '1',
                   'Sign in with your admin credentials (not the Wi-Fi password).',
                 ),
-                _Step('2', 'Find Wireless / Wi-Fi → WPS and turn it Off.'),
+                _Step(
+                  '2',
+                  'Find Wireless / Wi-Fi → WPS (or QSS) and turn it Off if your router vendor recommends it.',
+                ),
                 _Step(
                   '3',
                   'Set security to WPA2-Personal (AES) or WPA3-Personal.',

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../ads/app_open_ad_service.dart';
 import '../theme/app_colors.dart';
 import 'home_shell.dart';
 
@@ -33,7 +34,14 @@ class _SplashScreenState extends State<SplashScreen>
       end: Offset.zero,
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutCubic));
     _controller.forward();
-    Future<void>.delayed(const Duration(milliseconds: 1900), _goHome);
+    _start();
+  }
+
+  Future<void> _start() async {
+    await Future<void>.delayed(const Duration(milliseconds: 1900));
+    // Non-blocking: show App Open only if already loaded; then enter the app.
+    await AppOpenAdService.showOnColdStartIfReady();
+    _goHome();
   }
 
   void _goHome() {
@@ -109,7 +117,7 @@ class _SplashScreenState extends State<SplashScreen>
                                     color: Colors.white, size: 44),
                                 SizedBox(height: 2),
                                 Text(
-                                  'LAN',
+                                  'WPS',
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 26,
@@ -122,7 +130,7 @@ class _SplashScreenState extends State<SplashScreen>
                           ),
                           const SizedBox(height: 22),
                           const Text(
-                            'Lanlyst Tool',
+                            'WPSApp',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 22,
@@ -132,7 +140,7 @@ class _SplashScreenState extends State<SplashScreen>
                           ),
                           const SizedBox(height: 6),
                           Text(
-                            'Wi‑Fi security & network utilities',
+                            'WiFi Analyzer & Scanner',
                             style: TextStyle(
                               color: Colors.white.withValues(alpha: 0.72),
                               fontSize: 13,

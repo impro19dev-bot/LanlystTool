@@ -1,23 +1,29 @@
 import 'package:flutter/material.dart';
 
+import 'ads/ads_bootstrap.dart';
+import 'ads/app_open_ad_service.dart';
 import 'screens/splash_screen.dart';
 import 'theme/app_theme.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const LanlystToolApp());
+  // Ads init failures never prevent launch (handled inside bootstrapAds).
+  await bootstrapAds();
+  runApp(const WpsApp());
 }
 
-class LanlystToolApp extends StatelessWidget {
-  const LanlystToolApp({super.key});
+class WpsApp extends StatelessWidget {
+  const WpsApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Lanlyst Tool',
-      debugShowCheckedModeBanner: false,
-      theme: buildAppTheme(),
-      home: const SplashScreen(),
+    return AppOpenLifecycleObserver(
+      child: MaterialApp(
+        title: 'WPSApp: WiFi Analyzer & Scanner',
+        debugShowCheckedModeBanner: false,
+        theme: buildAppTheme(),
+        home: const SplashScreen(),
+      ),
     );
   }
 }

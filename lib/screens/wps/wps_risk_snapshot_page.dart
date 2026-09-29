@@ -31,11 +31,11 @@ class WpsRiskSnapshotPage extends StatelessWidget {
           ),
           const SizedBox(height: 12),
           InfoCard(
-            title: 'Hardening guidance',
+            title: 'Router setup tips',
             child: const Text(
-              'iOS cannot report whether Wi‑Fi Protected Setup (WPS) is on. '
-              'On a router you administer, open the admin page and turn WPS / QSS off. '
-              'Use WPA2 or WPA3 and a strong passphrase.',
+              'iOS cannot report whether Wi‑Fi Protected Setup (WPS) is enabled on your access point. '
+              'On a router you administer, open the admin page and turn WPS / QSS off if your vendor recommends it. '
+              'Use WPA2 or WPA3 with a strong passphrase. WPSApp is a Wi‑Fi analyzer — it does not recover passwords.',
               style: TextStyle(
                 color: AppColors.textMuted,
                 fontSize: 13,
@@ -45,17 +45,17 @@ class WpsRiskSnapshotPage extends StatelessWidget {
           ),
           const SizedBox(height: 12),
           InfoCard(
-            title: 'Risk posture (educational)',
+            title: 'Best practices (educational)',
             child: Column(
               children: const [
                 _RiskRow(
                   label: 'WPS / push-button setup',
-                  level: 'High if enabled',
+                  level: 'Often best left off',
                   color: Color(0xFFE74C3C),
                 ),
                 _RiskRow(
                   label: 'WPA2-Personal (AES)',
-                  level: 'Acceptable',
+                  level: 'Solid choice',
                   color: Color(0xFFF39C12),
                 ),
                 _RiskRow(
@@ -65,7 +65,7 @@ class WpsRiskSnapshotPage extends StatelessWidget {
                 ),
                 _RiskRow(
                   label: 'Open / WEP',
-                  level: 'Critical',
+                  level: 'Avoid',
                   color: Color(0xFFE74C3C),
                 ),
               ],

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../ads/fullscreen_ad_gate.dart';
 import '../state/app_network_state.dart';
 import '../theme/app_colors.dart';
+import '../widgets/banner_ad_bar.dart';
 import 'tabs/channel_tab.dart';
 import 'tabs/devices_tab.dart';
 import 'tabs/network_tab.dart';
@@ -27,12 +29,14 @@ class _HomeShellState extends State<HomeShell>
   late final TabController _tabs;
   late final AppNetworkState _state;
   late final bool _ownsState;
+  int _lastTabIndex = 0;
 
   @override
   void initState() {
     super.initState();
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
     _tabs = TabController(length: 4, vsync: this);
+    _tabs.addListener(_onTabChanged);
     _ownsState = widget.state == null;
     _state = widget.state ?? AppNetworkState();
     if (widget.autoRefreshWifi) {
@@ -40,8 +44,21 @@ class _HomeShellState extends State<HomeShell>
     }
   }
 
+  void _onTabChanged() {
+    if (_tabs.indexIsChanging) return;
+    if (_tabs.index == _lastTabIndex) return;
+    _lastTabIndex = _tabs.index;
+    // Rewarded when switching NETWORK / DEVICES / CHANNEL / TOOLS.
+    FullscreenAdGate.withRewarded(() {});
+  }
+
+  void _refreshWifi() {
+    FullscreenAdGate.withRewarded(_state.refreshWifi);
+  }
+
   @override
   void dispose() {
+    _tabs.removeListener(_onTabChanged);
     _tabs.dispose();
     if (_ownsState) {
       _state.dispose();
@@ -65,7 +82,7 @@ class _HomeShellState extends State<HomeShell>
                   Navigator.pop(ctx);
                   showAboutDialog(
                     context: context,
-                    applicationName: 'Lanlyst Tool',
+                    applicationName: 'WPSApp: WiFi Analyzer & Scanner',
                     applicationVersion: '1.0.0 (1)',
                     applicationLegalese:
                         'Educational Wi-Fi security guidance and LAN utilities. '
@@ -78,7 +95,7 @@ class _HomeShellState extends State<HomeShell>
                 title: const Text('Refresh Wi-Fi'),
                 onTap: () {
                   Navigator.pop(ctx);
-                  _state.refreshWifi();
+                  _refreshWifi();
                 },
               ),
               const SizedBox(height: 8),
@@ -100,7 +117,7 @@ class _HomeShellState extends State<HomeShell>
             children: [
               _AppHeader(
                 loading: _state.loadingWifi,
-                onRefresh: _state.loadingWifi ? null : _state.refreshWifi,
+                onRefresh: _state.loadingWifi ? null : _refreshWifi,
                 onMore: _showOverflowMenu,
                 tabs: TabBar(
                   controller: _tabs,
@@ -142,6 +159,7 @@ class _HomeShellState extends State<HomeShell>
                   ],
                 ),
               ),
+              const BannerAdBar(),
             ],
           ),
         );
@@ -206,7 +224,7 @@ class _AppHeader extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Lanlyst Tool',
+                      'WPSApp',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 18,
@@ -215,7 +233,7 @@ class _AppHeader extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'Network security toolkit',
+                      'WiFi Analyzer & Scanner',
                       style: TextStyle(
                         color: Colors.white70,
                         fontSize: 11.5,

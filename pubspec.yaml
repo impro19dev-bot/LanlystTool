@@ -1,7 +1,7 @@
 name: fc_app3_wpswifianalyzer
-description: "Lanlyst Tool — Wi-Fi security analyzer and network utilities for iOS."
+description: "WPSApp: WiFi Analyzer & Scanner — Wi-Fi scanning and network analysis tools for iOS."
 publish_to: 'none'
-version: 1.0.1+1
+version: 1.0.2+1
 
 environment:
   sdk: ^3.11.0
@@ -16,6 +16,8 @@ dependencies:
   http: ^1.4.0
   url_launcher: ^6.3.1
   shared_preferences: ^2.5.3
+  multiads:
+    path: packages/multiads
 
 dev_dependencies:
   flutter_test:

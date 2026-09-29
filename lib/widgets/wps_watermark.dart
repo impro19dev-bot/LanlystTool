@@ -33,7 +33,7 @@ class WpsWatermark extends StatelessWidget {
                 Icon(Icons.wifi_rounded, size: 52, color: AppColors.navy),
                 SizedBox(height: 2),
                 Text(
-                  'LAN',
+                  'WPS',
                   style: TextStyle(
                     fontSize: 34,
                     fontWeight: FontWeight.w800,

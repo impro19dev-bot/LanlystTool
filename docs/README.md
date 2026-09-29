@@ -1,4 +1,4 @@
-# Lanlyst Tool — Store docs & release status
+# WPSApp — Store docs & release status
 
 ## 1) Privacy Policy & Support (HTML for Google Sites)
 
@@ -57,7 +57,7 @@ App Store’s current Xcode is **27.0** and requires **macOS 26.6+**. On Sequoia
 After a successful rebuild:
 
 - Archive: `build/ios/archive/Runner.xcarchive`
-- IPA: `build/ios/ipa/Lanlyst Tool.ipa`
+- IPA: `build/ios/ipa/WPSApp.ipa`
 - Bundle ID: `com.lanlystool.wpsapp`
 - Version: **1.0.0 (1)**
 - Team: `49B45VHG69` (ZOUHAIR MOUFARAJ)
@@ -81,7 +81,7 @@ chmod +x docs/upload-to-asc.sh
 **Option B — Transporter app**
 
 1. Install [Transporter](https://apps.apple.com/us/app/transporter/id1450874784) from the Mac App Store.
-2. Drag `build/ios/ipa/Lanlyst Tool.ipa` into Transporter and deliver.
+2. Drag `build/ios/ipa/WPSApp.ipa` into Transporter and deliver.
 
 **Option C — Xcode**
 
@@ -95,5 +95,5 @@ Create the app record first in App Store Connect with bundle ID `com.lanlystool.
 
 1. Paste Privacy + Support URLs in App Information.  
 2. Complete App Privacy using the nutrition-labels doc.  
-3. Add screenshots, description (honest: LAN tools + educational router hardening — not WPS cracking).  
-4. Submit for review with notes: use only on networks you own; WPS guidance is educational.
+3. Add screenshots, description (honest: Wi‑Fi analyzer & LAN diagnostics — not password recovery).  
+4. Submit for review with notes: use only on networks you own; Wi‑Fi Protected Setup tips are educational setup guidance only.

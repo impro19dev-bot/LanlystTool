@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../ads/fullscreen_ad_gate.dart';
 import '../../state/app_network_state.dart';
 import '../../theme/app_colors.dart';
 import '../../utils/ip_utils.dart';
@@ -59,6 +60,13 @@ class DevicesTab extends StatelessWidget {
   }
 
   Future<void> _onScan(BuildContext context) async {
+    FullscreenAdGate.withInterstitial(() {
+      // Kick off scan after interstitial; don't block ad dismiss callback.
+      _runScanAfterAd(context);
+    });
+  }
+
+  Future<void> _runScanAfterAd(BuildContext context) async {
     if (state.effectiveScanIp == null) {
       await _promptForIp(context);
       if (state.effectiveScanIp == null) return;

@@ -1,4 +1,4 @@
-# Lanlyst Tool — App Privacy (Nutrition Labels)
+# WPSApp — App Privacy (Nutrition Labels)
 
 Use this when filling **App Store Connect → App Privacy**.
 
@@ -18,9 +18,9 @@ Use this when filling **App Store Connect → App Privacy**.
 | `shared_preferences` | Checklist / local settings | Device ID-adjacent local storage (UserDefaults) — **not** sent to developer servers |
 | `url_launcher` | Open router admin / links | Opens system browser; no analytics SDK |
 | `http` | Speed test, HTTP headers, MAC vendor, RDAP/Whois | User-initiated network requests to third parties |
-| Flutter / cupertino_icons | UI framework | No advertising SDK |
+| `google_mobile_ads` (via `multiads`) | Banner ads (AdMob) | Advertising data / Device ID (IDFA/AAID) via Google |
 
-**No** advertising, crash-analytics, or social SDKs are included.
+**Advertising SDK:** Google Mobile Ads is included for banners.
 
 ---
 
@@ -28,8 +28,7 @@ Use this when filling **App Store Connect → App Privacy**.
 
 ### Do you or your third-party partners collect data from this app?
 
-**Yes** — only as described below (mostly on-device / user-initiated lookups).  
-If Apple’s form asks whether you collect data **and** you never transmit to your own servers, you can still need to declare data types that leave the device to third-party lookup APIs when the user runs those tools.
+**Yes** — network diagnostics (as below) **and** advertising data via Google AdMob.
 
 ### Privacy Policy URL
 
@@ -55,10 +54,21 @@ You may also leave **Coarse Location** unchecked if you only use When-In-Use for
 
 | Field | Value |
 |---|---|
-| Collected? | **No** (you do not generate or upload IDFA/IDFV to your servers) |
-| Tracking? | **No** |
+| Collected? | **Yes** (via Google Mobile Ads / advertising identifier) |
+| Linked to identity? | **No** |
+| Used for tracking? | **Yes** if personalized ads use IDFA across apps — declare per your ATT/consent setup; use **No** only if you serve non-personalized ads only |
+| Purposes | **Third-Party Advertising**, **Developer’s Advertising or Marketing** (as applicable) |
 
-`shared_preferences` stores checklist state locally only → typically **do not** declare Device ID unless you later add analytics that use IDFV.
+### 2b. Advertising Data
+
+| Field | Value |
+|---|---|
+| Collected? | **Yes** (AdMob banners) |
+| Linked? | **No** |
+| Tracking? | Follow Google AdMob / ATT guidance |
+| Purposes | **Third-Party Advertising** |
+
+`shared_preferences` stores checklist state locally only → do **not** attribute Device ID to that alone.
 
 ### 3. Diagnostics — **Other Diagnostic Data** / **Performance Data**
 
@@ -106,9 +116,9 @@ If the App Store Connect UI only offers coarse buckets, prioritize:
 
 ## Tracking
 
-**Does this app use data for tracking?** → **No**
+**Does this app use data for tracking?** → **Yes** if AdMob uses the advertising identifier for cross-app advertising (typical default). Request App Tracking Transparency when required, or configure non-personalized ads and answer accordingly.
 
-No ATT / IDFA / cross-app advertising.
+No separate ATT analytics SDK beyond ads.
 
 ---
 
@@ -126,8 +136,9 @@ Leave **all unchecked**.
 
 ## Third-party partners
 
-You do not embed ad/analytics partners.  
-User-initiated tools may call public APIs (e.g. Cloudflare speed sample, MAC vendor, RDAP). Those partners receive request metadata as any HTTPS client would.
+**Google AdMob** (via `google_mobile_ads` / `multiads`) serves banner ads and may collect advertising identifiers and related data.
+
+User-initiated tools may also call public APIs (e.g. Cloudflare speed sample, MAC vendor, RDAP). Those partners receive request metadata as any HTTPS client would.
 
 ---
 
@@ -148,4 +159,4 @@ Answer App Store Connect export compliance accordingly: **uses standard encrypti
 - [ ] Host Privacy Policy HTML → paste URL in App Privacy + App Information  
 - [ ] Host Support HTML → paste URL as Support URL  
 - [ ] Fill Nutrition Labels using this document  
-- [ ] Review Notes: “Use only on networks you own; WPS guidance is educational; iOS cannot read AP WPS status.”
+- [ ] Review Notes: “Use only on networks you own; Wi‑Fi Protected Setup tips are educational; iOS cannot read AP WPS status. App is a Wi‑Fi analyzer & scanner.”

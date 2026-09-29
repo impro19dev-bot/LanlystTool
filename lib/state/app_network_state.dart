@@ -53,10 +53,10 @@ class AppNetworkState extends ChangeNotifier {
           .timeout(const Duration(seconds: 6));
       if (!onWifi && !(wifi?.hasWifi ?? false)) {
         loadError =
-            'Could not read your Wi-Fi name. Connect to Wi-Fi (not cellular only), ensure Location is allowed, and on a real device try Settings → Privacy → Location Services → Lanlyst Tool.';
+            'Could not read your Wi-Fi name. Connect to Wi-Fi (not cellular only), ensure Location is allowed, and on a real device try Settings → Privacy → Location Services → WPSApp.';
       } else if (wifi?.ssid == null) {
         loadError =
-            'Could not read your Wi-Fi name. Connect to Wi-Fi (not cellular only), ensure Location is allowed, and on a real device try Settings → Privacy → Location Services → Lanlyst Tool.';
+            'Could not read your Wi-Fi name. Connect to Wi-Fi (not cellular only), ensure Location is allowed, and on a real device try Settings → Privacy → Location Services → WPSApp.';
       }
     } catch (e) {
       loadError = e.toString();
