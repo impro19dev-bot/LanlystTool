@@ -23,7 +23,7 @@ class MultiAdsConfig {
     this.admobNativeActionColor = Colors.blue,
     // Facebook defaults
     this.facebookTestingId = "",
-    this.facebookiOSTrackingEnabled = true,
+    this.facebookiOSTrackingEnabled = false,
     // General
     this.enableLogs = true,
   });

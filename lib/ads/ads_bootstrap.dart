@@ -15,6 +15,7 @@ Future<void> bootstrapAds() async {
       json,
       config: MultiAdsConfig(
         enableLogs: kDebugMode,
+        facebookiOSTrackingEnabled: false,
         admobTestDeviceIds: const [
           '79738754EC81FA5F64972928128B2FFF',
         ],

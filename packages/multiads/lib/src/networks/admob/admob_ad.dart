@@ -51,7 +51,7 @@ class AdmobAD extends Ads {
       bannerAd: BannerAd(
         adUnitId: _admobData.bannerIds[_bannerIndex],
         size: AdSize.banner,
-        request: const AdRequest(),
+        request: const AdRequest(nonPersonalizedAds: true),
         listener: BannerAdListener(
           onAdLoaded: (_) {
             Log.log('Admob >> banner ad loaded $key');
@@ -93,7 +93,7 @@ class AdmobAD extends Ads {
           _appOpenAd = null;
         },
       ),
-      request: const AdRequest(),
+      request: const AdRequest(nonPersonalizedAds: true),
     );
   }
 
@@ -164,7 +164,7 @@ class AdmobAD extends Ads {
     );
     return InterstitialAd.load(
       adUnitId: _admobData.interIds[_interIndex],
-      request: const AdRequest(),
+      request: const AdRequest(nonPersonalizedAds: true),
       adLoadCallback: InterstitialAdLoadCallback(
         onAdLoaded: (ad) {
           Log.log('Admob >> $ad loaded');
@@ -228,7 +228,7 @@ class AdmobAD extends Ads {
     print(">> admob > loadRewardAd > _admobData.rewardIds[_rewardIndex]");
     return RewardedAd.load(
       adUnitId: _admobData.rewardIds[_rewardIndex],
-      request: const AdRequest(),
+      request: const AdRequest(nonPersonalizedAds: true),
       rewardedAdLoadCallback: RewardedAdLoadCallback(
         onAdLoaded: (RewardedAd ad) {
           print(">> admob > loadRewardAd > _admobData.rewardIds[_rewardIndex]");
@@ -337,7 +337,7 @@ class AdmobAD extends Ads {
             // loadNativeAd(); // Reload the ad when closed
           },
         ),
-        request: const AdRequest(),
+        request: const AdRequest(nonPersonalizedAds: true),
         nativeTemplateStyle: NativeTemplateStyle(
           templateType: templateType as TemplateType? ?? TemplateType.medium,
           mainBackgroundColor:

@@ -56,16 +56,16 @@ You may also leave **Coarse Location** unchecked if you only use When-In-Use for
 |---|---|
 | Collected? | **Yes** (via Google Mobile Ads / advertising identifier) |
 | Linked to identity? | **No** |
-| Used for tracking? | **Yes** if personalized ads use IDFA across apps — declare per your ATT/consent setup; use **No** only if you serve non-personalized ads only |
-| Purposes | **Third-Party Advertising**, **Developer’s Advertising or Marketing** (as applicable) |
+| Used for tracking? | **No** (non-personalized AdMob ads; no ATT / IDFA tracking) |
+| Purposes | **Third-Party Advertising** |
 
 ### 2b. Advertising Data
 
 | Field | Value |
 |---|---|
-| Collected? | **Yes** (AdMob banners) |
+| Collected? | **Yes** (AdMob) |
 | Linked? | **No** |
-| Tracking? | Follow Google AdMob / ATT guidance |
+| Tracking? | **No** |
 | Purposes | **Third-Party Advertising** |
 
 `shared_preferences` stores checklist state locally only → do **not** attribute Device ID to that alone.
@@ -116,9 +116,11 @@ If the App Store Connect UI only offers coarse buckets, prioritize:
 
 ## Tracking
 
-**Does this app use data for tracking?** → **Yes** if AdMob uses the advertising identifier for cross-app advertising (typical default). Request App Tracking Transparency when required, or configure non-personalized ads and answer accordingly.
+**Does this app use data for tracking?** → **No**.
 
-No separate ATT analytics SDK beyond ads.
+Ads are requested as **non-personalized** (`AdRequest(nonPersonalizedAds: true)`). There is no App Tracking Transparency prompt and no `NSUserTrackingUsageDescription`.
+
+Update App Store Connect App Privacy so Device ID / Advertising Data are **not used for tracking**.
 
 ---
 
@@ -159,4 +161,5 @@ Answer App Store Connect export compliance accordingly: **uses standard encrypti
 - [ ] Host Privacy Policy HTML → paste URL in App Privacy + App Information  
 - [ ] Host Support HTML → paste URL as Support URL  
 - [ ] Fill Nutrition Labels using this document  
-- [ ] Review Notes: “Use only on networks you own; Wi‑Fi Protected Setup tips are educational; iOS cannot read AP WPS status. App is a Wi‑Fi analyzer & scanner.”
+- [ ] App Privacy: Device ID / Advertising Data → **not used for tracking** (non-personalized ads; no ATT)
+- [ ] Review Notes: “Use only on networks you own; Wi‑Fi Protected Setup tips are educational; iOS cannot read AP WPS status. App is a Wi‑Fi analyzer & scanner. We do not track users; ads are non-personalized and ATT was removed.”
